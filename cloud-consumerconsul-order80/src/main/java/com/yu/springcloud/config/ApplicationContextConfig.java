@@ -6,15 +6,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @author yy
- * @description 消费者只关心微服务名称.
- * @date 2020-09-14 16:54
+ * @Author: yy
+ * @Date: 2020/11/1 18:19
+ * @Version: 1.0.0
  */
 @Configuration
 public class ApplicationContextConfig {
+
     @Bean
-    //@LoadBalanced
-    public RestTemplate restTemplate() {
+    @LoadBalanced
+    public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
 }
