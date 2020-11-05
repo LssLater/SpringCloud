@@ -21,6 +21,7 @@
         <module>cloud-consumer-feign-order80</module>
         <module>cloud-hystrix-pay-8007</module>
         <module>cloud-hystrix-order-80</module>
+        <module>cloud-consumer-hystrix-dashboard9001</module>
     </modules>
     <packaging>pom</packaging>
 

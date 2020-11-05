@@ -1,6 +1,8 @@
 package com.yu.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.yu.springcloud.service.PaymentHystrixService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +18,36 @@ import javax.annotation.Resource;
  */
 @RestController
 @Slf4j
+@DefaultProperties(defaultFallback = "paymentGlobalFallbackMethod")
 public class OrderHystrixController {
 
     @Resource
     private PaymentHystrixService paymentHystrixService;
 
+    @GetMapping("/consumer/payment/hystrix/timeout/{id}")
+    @HystrixCommand
+    public String paymentInfoTimeOut(@PathVariable("id") Integer id) {
+        int age = 10 / 0;
+        return paymentHystrixService.paymentInfoTimeOut(id);
+    }
+
+    /**
+     * 全局fallback 降级方法
+     * @return
+     */
+    public String paymentGlobalFallbackMethod() {
+        return "Global异常处理信息，请稍后再试，o(╥﹏╥)o";
+    }
+
     @GetMapping("/consumer/payment/hystrix/ok/{id}")
-    public String paymentInfo_OK(@PathVariable("id") Integer id) {
-        String result = paymentHystrixService.paymentInfo_OK(id);
+    public String paymentInfoOk(@PathVariable("id") Integer id) {
+        String result = paymentHystrixService.paymentInfoOk(id);
         return result;
     }
 
-    @GetMapping("/consumer/payment/hystrix/timeout/{id}")
-    public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
-        String result = paymentHystrixService.paymentInfo_TimeOut(id);
-        return result;
+
+    public String paymentTimeOutFallbackMethod(@PathVariable("id") Integer id){
+        return "我是消费者8090，对方支付系统繁忙请稍后再试";
     }
+
 }
