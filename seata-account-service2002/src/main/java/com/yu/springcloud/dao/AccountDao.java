@@ -6,8 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.math.BigDecimal;
 
 /**
- * @author Yang Hao
- * @date 2020-09-27 12:01
+ * @Author: yy
+ * @Date: 2020/11/19 17:35
+ * @Version: 1.0.0
  */
 @Mapper
 public interface AccountDao {

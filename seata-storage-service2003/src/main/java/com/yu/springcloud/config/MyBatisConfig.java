@@ -4,8 +4,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author Yang Hao
- * @date 2020-09-27 11:49
+ * @Author: yy
+ * @Date: 2020/11/19 17:35
+ * @Version: 1.0.0
  */
 @Configuration
 @MapperScan("com.yu.springcloud.dao")

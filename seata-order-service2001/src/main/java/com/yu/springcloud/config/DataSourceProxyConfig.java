@@ -15,10 +15,9 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import javax.sql.DataSource;
 
 /**
- * 使用seata对数据源进行代理
- *
- * @author Yang Hao
- * @date 2020-09-27 11:49
+ * @Author: yy
+ * @Date: 2020/11/19 17:35
+ * @Version: 1.0.0
  */
 @Configuration
 public class DataSourceProxyConfig {

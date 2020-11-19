@@ -3,8 +3,9 @@ package com.yu.springcloud.service;
 import java.math.BigDecimal;
 
 /**
- * @author Yang Hao
- * @date 2020-09-27 11:58
+ * @Author: yy
+ * @Date: 2020/11/19 17:35
+ * @Version: 1.0.0
  */
 public interface AccountService {
     /**
